@@ -38,6 +38,10 @@ for (let i = 0; i < imgLenght; i++) {
   }
 
 
+banner.src = "./assets/images/slideshow/" + slides[0].image;
+subtitle.innerHTML = slides[0].tagLine;
+dot[0].classList.add("dot_selected");
+
 
 
 
