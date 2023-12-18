@@ -25,11 +25,17 @@ const dots = document.querySelector("dots");
 let banner = document.querySelector(".banner-img");
 let subtitle = document.querySelector("#banner > p");
 
+let dot = document.querySelectorAll(".dot");
+  
+
 let counter = 0;
 let imgLenght = slides.length;
 
 // Bullet points
-
+//Création des dots dans le div dots en fonction du nombre d'image dans slides
+for (let i = 0; i < imgLenght; i++) {
+	dots.innerHTML = dots.innerHTML + "<span class='dot'></span>";
+  }
 
 
 
