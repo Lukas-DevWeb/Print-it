@@ -17,41 +17,59 @@ const slides = [
 	}
 ]
 
-// Variables
+// Variables 
+//On vient faire appel aux éléments de la page web (DOM)
 const arrowLeft = document.querySelector(".arrow_left");
 const arrowRight = document.querySelector(".arrow_right");
 
-const dots = document.querySelector("dots");
-let banner = document.querySelector(".banner-img");
-let subtitle = document.querySelector("#banner > p");
+const banner = document.querySelector("#banner");
 
-let dot = document.querySelectorAll(".dot");
-  
+const bannerImage = banner.children.item(0);
+const bannerTagLine = banner.children.item(1);
+const dotContainer = document.querySelector(".dots");
+const dots = dotContainer.children;
 
 let counter = 0;
-let imgLenght = slides.length;
 
 // Bullet points
-//Création des dots dans le div dots en fonction du nombre d'image dans slides
-for (let i = 0; i < imgLenght; i++) {
-	dots.innerHTML = dots.innerHTML + "<span class='dot'></span>";
-  }
+//Ajouts des bullet points en bas du slider
+for (let i = 1; i < slides.length; i++) {
+	const dot = document.createElement('div');
+	dot.classList.add('dot');
+	dotContainer.appendChild(dot);
+}
 
+//Mise en surbrillace du bullet point
+function dotSelected() {
+	for (let i = 0; i < dots.length; i++) {
+		if (i === counter) {
+			dots[i].classList.add("dot_selected");
+		} else {
+			dots[i].classList.remove("dot_selected");
+		}
+	}
 
-banner.src = "./assets/images/slideshow/" + slides[0].image;
-subtitle.innerHTML = slides[0].tagLine;
-dot[0].classList.add("dot_selected");
-
-
-
+}
 
 // Evenlistener clic gauche
-arrowLeft.addEventListener("click", function(){
-	console.log("tu as cliqué sur la flèche de gauche")
-})
+arrowLeft.addEventListener("click", function () {
+	counter--; //diapositive précédente 
+	if (counter < 0) {
+		counter= slides.length - 1;
+	} // infini scroll
+	bannerImage.src = "./assets/images/slideshow/" + slides[counter].image; // màj image
+	bannerTagLine.innerHTML = slides[counter].tagLine; // màj texte
+	dotSelected(); // fonction bullet point
+});
 
+arrowRight.addEventListener("click", function () {
+	counter++; // diapositive suivante
+	if (counter >= slides.length) {
+		counter = 0;
+	} // infini scroll
+	bannerImage.src = "./assets/images/slideshow/" + slides[counter].image; // maj de l'image
+	bannerTagLine.innerHTML = slides[counter].tagLine; // maj du texte
+	dotSelected(); // fonction bullet point
+});
 
-// Evenlistener clic droit
-arrowRight.addEventListener("click", function(){
-	console.log("tu as cliqué sur la flèche de droite")
-})
+console.log(banner.children.item)
