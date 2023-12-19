@@ -56,20 +56,21 @@ arrowLeft.addEventListener("click", function () {
 	counter--; //diapositive précédente 
 	if (counter < 0) {
 		counter= slides.length - 1;
-	} // infini scroll
-	bannerImage.src = "./assets/images/slideshow/" + slides[counter].image; // màj image
-	bannerTagLine.innerHTML = slides[counter].tagLine; // màj texte
-	dotSelected(); // fonction bullet point
+	} // scroll infini
+	bannerImage.src = "./assets/images/slideshow/" + slides[counter].image; // maj de l'image
+	bannerTagLine.innerHTML = slides[counter].tagLine; // maj du texte
+	dotSelected();
 });
 
+//Evenlistener clic droit
 arrowRight.addEventListener("click", function () {
 	counter++; // diapositive suivante
 	if (counter >= slides.length) {
 		counter = 0;
-	} // infini scroll
+	} // scroll infini
 	bannerImage.src = "./assets/images/slideshow/" + slides[counter].image; // maj de l'image
 	bannerTagLine.innerHTML = slides[counter].tagLine; // maj du texte
-	dotSelected(); // fonction bullet point
+	dotSelected();
 });
 
 console.log(banner.children.item)
