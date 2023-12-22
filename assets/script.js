@@ -73,4 +73,4 @@ arrowRight.addEventListener("click", function () {
 	dotSelected();
 });
 
-console.log(banner.children.item)
+console.log()
