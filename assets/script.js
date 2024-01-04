@@ -39,7 +39,7 @@ for (let i = 1; i < slides.length; i++) {
 	dotContainer.appendChild(dot);
 }
 
-//Mise en surbrillace du bullet point
+//Mise en surbrillance du bullet point
 function dotSelected() {
 	for (let i = 0; i < dots.length; i++) {
 		if (i === counter) {
